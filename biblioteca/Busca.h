@@ -18,6 +18,7 @@ int ContPossibilidades(char *, int coluna);
 char * desempilhar(char *, PILHA *);
 char * MovePonto(struct cel *, char *, int );
 void Empilhar(PILHA *, int);
+void FreePilha(PILHA *);
 
 
 #endif

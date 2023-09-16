@@ -13,5 +13,8 @@ int main(){
     BuscaCaminho(mat, lin, col);
     LimpaMat(mat,lin,col);
     PrintaMatriz(mat,lin,col);
+
+    free(mat);
+    
     return 0;
 }

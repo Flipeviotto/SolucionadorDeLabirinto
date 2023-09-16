@@ -86,6 +86,15 @@ char * MovePonto(struct cel * aux, char * ponto, int coluna){
     }
 }
 
+void FreePilha(PILHA * topo){
+    struct cel * aux;
+    while(topo->next!=NULL){
+        aux = topo->next;
+        topo->next = aux->next;
+        free(aux);
+    }
+}
+
 void BuscaCaminho(char * mat, int linha, int coluna){
     PILHA * topo = IniciaPilha();
     char * ponto = BuscaInicio(mat, linha, coluna);
@@ -108,5 +117,8 @@ void BuscaCaminho(char * mat, int linha, int coluna){
             ponto = MovePonto(topo->next, ponto, coluna);
         }
     }
+
+    FreePilha(topo);
+
 }
 
