@@ -86,8 +86,7 @@ char * MovePonto(struct cel * aux, char * ponto, int coluna){
     }
 }
 
-
-char * BuscaCaminho(char * mat, int linha, int coluna){
+void BuscaCaminho(char * mat, int linha, int coluna){
     PILHA * topo = IniciaPilha();
     char * ponto = BuscaInicio(mat, linha, coluna);
 
@@ -109,7 +108,5 @@ char * BuscaCaminho(char * mat, int linha, int coluna){
             ponto = MovePonto(topo->next, ponto, coluna);
         }
     }
-
-    return mat;
 }
 

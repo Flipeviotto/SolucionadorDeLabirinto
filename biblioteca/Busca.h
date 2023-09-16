@@ -11,7 +11,7 @@ typedef struct{
     struct cel * next;
 }PILHA;
 
-char * BuscaCaminho(char * mat, int, int); //retorna pilha com caminho
+void BuscaCaminho(char * mat, int, int); //retorna pilha com caminho
 PILHA * IniciaPilha();
 char * BuscaInicio(char *, int,int);
 int ContPossibilidades(char *, int coluna);

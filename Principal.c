@@ -10,7 +10,7 @@ int main(){
     int col = 21;
     
     char * mat = CriaMatriz(lin,col);
-    mat = BuscaCaminho(mat, lin, col);
+    BuscaCaminho(mat, lin, col);
     LimpaMat(mat,lin,col);
     PrintaMatriz(mat,lin,col);
     return 0;
