@@ -2,6 +2,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
+#ifdef _WIN64
+    #include <Windows.h>
+#else
+    #include <unistd.h>
+#endif
+
 char * CriaMatriz(int lin, int col){ //baixar o conteudo da matriz
     FILE * arq = fopen("labirinto.txt", "r");
     if(arq==NULL){
@@ -26,6 +33,25 @@ void PrintaMatriz(char * mat, int lin, int col){
         }
     }
     printf("\n");
+}
+
+void PrintaBusca(char * mat,int lin, int col){
+    for(int i=0;i<lin+1;i++){
+        for(int j=0;j<col;j++){
+            if(*(mat+col*i+j)=='c')
+                printf(".");
+            else if(*(mat+col*i+j)=='f')
+                printf("%c",' ');
+            else{
+                printf("%c", *(mat+col*i+j));
+                if(*(mat+col*i+j)=='.'){
+                    *(mat+col*i+j) = 'f';
+                }
+            }
+        }
+    }
+    printf("\n");
+    sleep(1);
 }
 
 void LimpaMat(char * mat, int linha, int coluna){

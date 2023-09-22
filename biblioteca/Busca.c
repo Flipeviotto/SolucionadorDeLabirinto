@@ -34,18 +34,21 @@ int ContPossibilidades(char * p, int coluna){
     return possibilidade;
 }
 
-char * desempilhar(char * ponto, PILHA * topo){
+char * desempilhar(char * ponto, PILHA * topo, char* mat, int lin, int col){
     struct cel * aux;
     
     while(topo->next!=NULL && topo->next->possibilidades==1){
+        PrintaBusca(mat, lin, col);
         *ponto = 'f';
         ponto += topo->next->deslocamento * (-1);
 
         aux = topo->next;
         topo->next = aux->next;
         free(aux);
+        
     }
     if(topo->next!=NULL){
+        PrintaBusca(mat, lin, col);
         *ponto = 'f';
         ponto += topo->next->deslocamento * (-1);
         aux = topo->next;
@@ -100,6 +103,7 @@ void BuscaCaminho(char * mat, int linha, int coluna){
     char * ponto = BuscaInicio(mat, linha, coluna);
 
     while(*ponto != 'o'){
+        PrintaBusca(mat, linha, coluna);
         int possibilidade = ContPossibilidades(ponto, coluna);
         
         if(possibilidade == 0){
@@ -107,7 +111,8 @@ void BuscaCaminho(char * mat, int linha, int coluna){
                 printf("nao tem solucao\n");
                 exit(1);
             }
-            ponto = desempilhar(ponto, topo);
+            *ponto = '.';
+            ponto = desempilhar(ponto, topo, mat, linha, coluna);
         }
         else{
             if(*ponto!='p'){

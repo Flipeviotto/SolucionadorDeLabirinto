@@ -15,7 +15,7 @@ void BuscaCaminho(char * mat, int, int); //retorna pilha com caminho
 PILHA * IniciaPilha();
 char * BuscaInicio(char *, int,int);
 int ContPossibilidades(char *, int coluna);
-char * desempilhar(char *, PILHA *);
+char * desempilhar(char *, PILHA *, char * , int, int);
 char * MovePonto(struct cel *, char *, int );
 void Empilhar(PILHA *, int);
 void FreePilha(PILHA *);
