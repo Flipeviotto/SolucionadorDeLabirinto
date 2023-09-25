@@ -6,10 +6,11 @@
 
 
 int main(int argc, char* argv[]){
-    int lin =  20;
-    int col = 21;
     
-    char * mat = CriaMatriz(lin,col);
+    int lin;
+    int col;
+    
+    char * mat = CriaMatriz(&lin,&col);
     BuscaCaminho(mat, lin, col);
     //PrintaMatriz(mat,lin,col);
     //printf("\n\n");
