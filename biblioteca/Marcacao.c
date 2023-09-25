@@ -44,7 +44,7 @@ char * CriaMatriz(int * lin, int * col){ //baixar o conteudo da matriz
             
     }
     fclose(arq);
-    *(mat+*lin * *col) ='\n';
+    *(mat+*lin * *col-1) ='\n';
 
     return mat;
     
