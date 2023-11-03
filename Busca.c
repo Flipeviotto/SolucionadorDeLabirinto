@@ -154,10 +154,15 @@ void BuscaCaminho(char * mat, int linha, int coluna){
     PILHA * topo = IniciaPilha();
     int x,y;
     char * ponto = BuscaInicio(mat, linha, coluna, &x,&y);
-    int x2=x,y2=y;
+    int x2=x,y2=y, libera=1;
 
     while(*ponto != 'o'){
-        PrintaBusca(mat, linha, coluna);
+        if(libera || topo->next==NULL){
+            PrintaBusca(mat, linha, coluna);
+        }
+        libera=1;
+
+        
         int possibilidade = ContPossibilidades(ponto, coluna);
         
         if(possibilidade == 0){
@@ -167,6 +172,7 @@ void BuscaCaminho(char * mat, int linha, int coluna){
             }
             *ponto = '.';
             ponto = desempilhar(ponto, topo, mat, linha, coluna);
+            libera=0;
             
             if(topo->next!=NULL){
                 x = topo->next->x;
@@ -185,6 +191,7 @@ void BuscaCaminho(char * mat, int linha, int coluna){
             ponto = MovePonto(topo->next, ponto, coluna, &x,&y);
         }
     }
+    LimpaTela();
 
     //printar as coordenadas invertida;
     if(topo->next!=NULL){

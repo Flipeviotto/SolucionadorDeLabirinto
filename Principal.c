@@ -1,7 +1,12 @@
+/*
+* autor 1: Filipe Viotto Rodrigues
+* autor 2: Isadora Vanço
+* Solucionador de Labirinto usando pilha
+*/
 #include <stdio.h>
 #include <stdlib.h>
-#include "biblioteca/Marcacao.h"
-#include "biblioteca/Busca.h"
+#include "Marcacao.h"
+#include "Busca.h"
 
 
 

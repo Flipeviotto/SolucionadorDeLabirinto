@@ -5,9 +5,21 @@
 
 #ifdef _WIN64
     #include <Windows.h>
+#elif _WIN32
+    #include <Windows.h>
 #else
     #include <unistd.h>
 #endif
+
+void LimpaTela(){
+    #ifdef _WIN64
+        system ("cls");
+    #elif _WIN32
+        system ("cls");
+    #else
+        system ("clear");
+    #endif
+}
 
 char * CriaMatriz(int * lin, int * col){ //baixar o conteudo da matriz
     FILE * arq = fopen("labirinto.txt", "r");
@@ -16,9 +28,8 @@ char * CriaMatriz(int * lin, int * col){ //baixar o conteudo da matriz
         exit(1);
     }
     
-    fscanf(arq,"%d", lin); 
-    *col = *lin;
-    *lin = *lin -1;
+    fscanf(arq,"%d",lin);
+    *col = *lin+1;
 
     char c;
     char * mat = malloc(sizeof(char*)* (*col) * (*lin));
@@ -61,6 +72,7 @@ void PrintaMatriz(char * mat, int lin, int col){
 }
 
 void PrintaBusca(char * mat,int lin, int col){
+    LimpaTela();
     printf(" ");
     for(int i=0;i<lin+1;i++){
         for(int j=0;j<col;j++){
@@ -77,7 +89,13 @@ void PrintaBusca(char * mat,int lin, int col){
         }
     }
     printf("\n");
-    sleep(1);
+    #ifdef _WIN64
+        Sleep(700);
+    #elif _WIN32
+        Sleep(700);
+    #else
+        usleep(70000);
+    #endif 
 }
 
 void LimpaMat(char * mat, int linha, int coluna){
@@ -94,4 +112,3 @@ void LimpaMat(char * mat, int linha, int coluna){
         }
     }
 }
-
